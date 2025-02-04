@@ -29,7 +29,7 @@ const ExpenseList = ({
     sortBy: "date",
     order: "asc",
   });
-  const [open, setOpen] = useState(true); // State to manage collapse
+  const [open, setOpen] = useState(true);
 
   useEffect(() => {
     const fetchBudgets = async () => {
