@@ -1,26 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import AddExpense from './components/AddExpense';
-import ExpenseList from './components/ExpenseList';
-import AddBudget from './components/AddBudget';
-import Dashboard from './components/Dashboard';
-import ExpenseStatistics from './components/ExpenseStatistics';
-import axios from 'axios';
-
+import React, { useState, useEffect } from "react";
+import AddExpense from "./components/AddExpense";
+import ExpenseList from "./components/ExpenseList";
+import AddBudget from "./components/AddBudget";
+import Dashboard from "./components/Dashboard";
+import ExpenseStatistics from "./components/ExpenseStatistics";
+import axios from "axios";
 
 const App = () => {
   const [expenses, setExpenses] = useState([]);
   const [budgets, setBudgets] = useState([]);
   const [darkMode, setDarkMode] = useState(false);
-  const [showDashboard, setShowDashboard] = useState(false); 
-  const [showStatistics, setShowStatistics] = useState(false); 
+  const [showDashboard, setShowDashboard] = useState(false);
+  const [showStatistics, setShowStatistics] = useState(false);
 
   useEffect(() => {
     const fetchExpenses = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/expenses');
+        const response = await axios.get("http://localhost:5000/api/expenses");
         setExpenses(response.data);
       } catch (error) {
-        console.error('Error fetching expenses:', error);
+        console.error("Error fetching expenses:", error);
       }
     };
 
@@ -30,10 +29,10 @@ const App = () => {
   useEffect(() => {
     const fetchBudgets = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/budgets');
+        const response = await axios.get("http://localhost:5000/api/budgets");
         setBudgets(response.data);
       } catch (error) {
-        console.error('Error fetching budgets:', error);
+        console.error("Error fetching budgets:", error);
       }
     };
 
@@ -51,9 +50,9 @@ const App = () => {
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
     if (!darkMode) {
-      document.body.classList.add('dark-mode');
+      document.body.classList.add("dark-mode");
     } else {
-      document.body.classList.remove('dark-mode');
+      document.body.classList.remove("dark-mode");
     }
   };
 
@@ -65,9 +64,18 @@ const App = () => {
     setShowStatistics(!showStatistics);
   };
 
-  const totalSpending = expenses.reduce((total, expense) => total + expense.amount, 0);
-  const highestExpense = Math.max(...expenses.map(expense => expense.amount), 0);
-  const lowestExpense = Math.min(...expenses.map(expense => expense.amount), 0);
+  const totalSpending = expenses.reduce(
+    (total, expense) => total + expense.amount,
+    0
+  );
+  const highestExpense = Math.max(
+    ...expenses.map((expense) => expense.amount),
+    0
+  );
+  const lowestExpense = Math.min(
+    ...expenses.map((expense) => expense.amount),
+    0
+  );
   const averageMonthlyExpense = totalSpending / (new Date().getMonth() + 1);
 
   const spendingByCategory = expenses.reduce((acc, expense) => {
@@ -77,7 +85,7 @@ const App = () => {
 
   const remainingBudget = budgets.reduce((acc, budget) => {
     const spent = expenses
-      .filter(expense => expense.category === budget.category)
+      .filter((expense) => expense.category === budget.category)
       .reduce((total, expense) => total + expense.amount, 0);
     acc[budget.category] = budget.budget - spent;
     return acc;
@@ -88,19 +96,21 @@ const App = () => {
       <h1 className="text-center mb-4">Expense Tracker</h1>
       <div className="d-flex justify-content-end mb-4">
         <i
-          className={`bi ${darkMode ? 'bi-sun' : 'bi-moon'} fs-2 cursor-pointer`}
+          className={`bi ${
+            darkMode ? "bi-sun" : "bi-moon"
+          } fs-2 cursor-pointer`}
           onClick={toggleDarkMode}
-          style={{ cursor: 'pointer', marginRight: '10px' }}
+          style={{ cursor: "pointer", marginRight: "10px" }}
         ></i>
         <i
           className={`bi bi-bar-chart-fill fs-2 cursor-pointer`}
           onClick={toggleDashboard}
-          style={{ cursor: 'pointer', marginRight: '10px' }}
+          style={{ cursor: "pointer", marginRight: "10px" }}
         ></i>
         <i
           className={`bi bi-card-list fs-2 cursor-pointer`}
           onClick={toggleStatistics}
-          style={{ cursor: 'pointer' }}
+          style={{ cursor: "pointer" }}
         ></i>
       </div>
       {showDashboard && (
@@ -126,7 +136,13 @@ const App = () => {
           <AddBudget addBudget={addBudget} darkMode={darkMode} />
         </div>
       </div>
-      <ExpenseList expenses={expenses} setExpenses={setExpenses} budgets={budgets} setBudgets={setBudgets} darkMode={darkMode} />
+      <ExpenseList
+        expenses={expenses}
+        setExpenses={setExpenses}
+        budgets={budgets}
+        setBudgets={setBudgets}
+        darkMode={darkMode}
+      />
     </div>
   );
 };

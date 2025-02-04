@@ -1,9 +1,9 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const { Expense, Budget } = require('../models/Expense');
+const { Expense, Budget } = require("../models/Expense");
 
 // Expense routes
-router.post('/expenses', async (req, res) => {
+router.post("/expenses", async (req, res) => {
   const expense = new Expense(req.body);
   try {
     await expense.save();
@@ -13,7 +13,7 @@ router.post('/expenses', async (req, res) => {
   }
 });
 
-router.get('/expenses', async (req, res) => {
+router.get("/expenses", async (req, res) => {
   try {
     const expenses = await Expense.find();
     res.status(200).send(expenses);
@@ -22,9 +22,12 @@ router.get('/expenses', async (req, res) => {
   }
 });
 
-router.put('/expenses/:id', async (req, res) => {
+router.put("/expenses/:id", async (req, res) => {
   try {
-    const expense = await Expense.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+    const expense = await Expense.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
     if (!expense) {
       return res.status(404).send();
     }
@@ -34,7 +37,7 @@ router.put('/expenses/:id', async (req, res) => {
   }
 });
 
-router.delete('/expenses/:id', async (req, res) => {
+router.delete("/expenses/:id", async (req, res) => {
   try {
     const expense = await Expense.findByIdAndDelete(req.params.id);
     if (!expense) {
@@ -47,7 +50,7 @@ router.delete('/expenses/:id', async (req, res) => {
 });
 
 // Budget routes
-router.post('/budgets', async (req, res) => {
+router.post("/budgets", async (req, res) => {
   const budget = new Budget(req.body);
   try {
     await budget.save();
@@ -57,7 +60,7 @@ router.post('/budgets', async (req, res) => {
   }
 });
 
-router.get('/budgets', async (req, res) => {
+router.get("/budgets", async (req, res) => {
   try {
     const budgets = await Budget.find();
     res.status(200).send(budgets);
@@ -66,9 +69,12 @@ router.get('/budgets', async (req, res) => {
   }
 });
 
-router.put('/budgets/:id', async (req, res) => {
+router.put("/budgets/:id", async (req, res) => {
   try {
-    const budget = await Budget.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+    const budget = await Budget.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
     if (!budget) {
       return res.status(404).send();
     }
@@ -78,7 +84,7 @@ router.put('/budgets/:id', async (req, res) => {
   }
 });
 
-router.delete('/budgets/:id', async (req, res) => {
+router.delete("/budgets/:id", async (req, res) => {
   try {
     const budget = await Budget.findByIdAndDelete(req.params.id);
     if (!budget) {

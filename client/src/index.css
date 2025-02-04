@@ -1,5 +1,5 @@
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: #f8f9fa;
   margin: 0;
   padding: 0;
@@ -11,7 +11,8 @@ body {
   padding: 20px;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-weight: 700;
   margin-bottom: 20px;
 }
@@ -23,11 +24,12 @@ body.dark-mode {
 }
 
 body.dark-mode .card {
-  background-color: #333333;
+  background-color: #445f54;
   color: #ffffff;
 }
 
-body.dark-mode .form-control, body.dark-mode .form-select {
+body.dark-mode .form-control,
+body.dark-mode .form-select {
   background-color: #444444;
   color: #ffffff;
   border-color: #555555;
@@ -50,18 +52,34 @@ body.dark-mode .list-group-item {
 
 /* Keyframe Animations */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideIn {
-  from { transform: translateY(20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 @keyframes popIn {
-  from { transform: scale(0.9); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* Apply Animations and Transitions */
@@ -77,11 +95,15 @@ body.dark-mode .list-group-item {
   transform: scale(1.02);
 }
 
-button, .form-control, .form-select {
+button,
+.form-control,
+.form-select {
   transition: background-color 0.3s, border-color 0.3s, color 0.3s;
 }
 
-button:hover, .form-control:hover, .form-select:hover {
+button:hover,
+.form-control:hover,
+.form-select:hover {
   background-color: #007bff;
   border-color: #0056b3;
   color: #ffffff;
@@ -144,7 +166,7 @@ button:hover, .form-control:hover, .form-select:hover {
   color: #f8f9fa !important;
 }
 
-/* Category Colors */
+/* Category Colors
 .category-food {
   background-color: #ffeb3b;
 }
@@ -163,4 +185,4 @@ button:hover, .form-control:hover, .form-select:hover {
 
 .category-health {
   background-color: #9c27b0;
-}
+} */

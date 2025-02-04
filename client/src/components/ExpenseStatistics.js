@@ -1,6 +1,11 @@
-import React from 'react';
+import React from "react";
 
-const ExpenseStatistics = ({ totalSpending, highestExpense, lowestExpense, averageMonthlyExpense }) => {
+const ExpenseStatistics = ({
+  totalSpending,
+  highestExpense,
+  lowestExpense,
+  averageMonthlyExpense,
+}) => {
   return (
     <div className="row mt-4">
       <div className="col-md-3 mb-4">

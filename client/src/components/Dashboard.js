@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Dashboard = ({ totalSpending, spendingByCategory, remainingBudget }) => {
   return (
@@ -17,7 +17,9 @@ const Dashboard = ({ totalSpending, spendingByCategory, remainingBudget }) => {
             <h5 className="card-title">Spending by Category</h5>
             <ul className="list-group list-group-flush">
               {Object.entries(spendingByCategory).map(([category, amount]) => (
-                <li key={category} className="list-group-item">{category}: ${amount}</li>
+                <li key={category} className="list-group-item">
+                  {category}: ${amount}
+                </li>
               ))}
             </ul>
           </div>
@@ -29,7 +31,9 @@ const Dashboard = ({ totalSpending, spendingByCategory, remainingBudget }) => {
             <h5 className="card-title">Remaining Budget</h5>
             <ul className="list-group list-group-flush">
               {Object.entries(remainingBudget).map(([category, amount]) => (
-                <li key={category} className="list-group-item">{category}: ${amount}</li>
+                <li key={category} className="list-group-item">
+                  {category}: ${amount}
+                </li>
               ))}
             </ul>
           </div>

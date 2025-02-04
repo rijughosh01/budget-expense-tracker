@@ -1,29 +1,37 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
 
 const AddExpense = ({ addExpense, darkMode }) => {
-  const [description, setDescription] = useState('');
-  const [category, setCategory] = useState('');
-  const [amount, setAmount] = useState('');
+  const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("");
+  const [amount, setAmount] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newExpense = { description, category, amount: parseFloat(amount) };
 
     try {
-      const response = await axios.post('http://localhost:5000/api/expenses', newExpense);
+      const response = await axios.post(
+        "http://localhost:5000/api/expenses",
+        newExpense
+      );
       addExpense(response.data);
-      alert('Expense added successfully!');
-      setDescription('');
-      setCategory('');
-      setAmount('');
+      alert("Expense added successfully!");
+      setDescription("");
+      setCategory("");
+      setAmount("");
     } catch (error) {
-      console.error('Error adding expense:', error);
+      console.error("Error adding expense:", error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className={`card p-4 shadow-sm mb-4 ${darkMode ? 'bg-secondary text-light' : 'bg-light'}`}>
+    <form
+      onSubmit={handleSubmit}
+      className={`card p-4 shadow-sm mb-4 ${
+        darkMode ? "bg-secondary text-light" : "bg-light"
+      }`}
+    >
       <h2 className="card-title">Add Expense</h2>
       <div className="mb-3">
         <input
