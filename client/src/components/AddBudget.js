@@ -11,7 +11,7 @@ const AddBudget = ({ addBudget, darkMode }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/budgets",
+        "https://expense-track-j3qa.onrender.com/api/budgets",
         newBudget
       );
       addBudget(response.data);

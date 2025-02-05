@@ -16,7 +16,7 @@ const App = () => {
   useEffect(() => {
     const fetchExpenses = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/expenses");
+        const response = await axios.get("https://expense-track-j3qa.onrender.com/api/expenses");
         setExpenses(response.data);
       } catch (error) {
         console.error("Error fetching expenses:", error);
@@ -29,7 +29,7 @@ const App = () => {
   useEffect(() => {
     const fetchBudgets = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/budgets");
+        const response = await axios.get("https://expense-track-j3qa.onrender.com/api/budgets");
         setBudgets(response.data);
       } catch (error) {
         console.error("Error fetching budgets:", error);

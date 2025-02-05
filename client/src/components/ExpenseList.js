@@ -34,7 +34,7 @@ const ExpenseList = ({
   useEffect(() => {
     const fetchBudgets = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/budgets");
+        const response = await axios.get("https://expense-track-j3qa.onrender.com/api/budgets");
         setBudgets(response.data);
       } catch (error) {
         console.error("Error fetching budgets:", error);
@@ -47,7 +47,7 @@ const ExpenseList = ({
   useEffect(() => {
     const fetchExpenses = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/expenses", {
+        const response = await axios.get("https://expense-track-j3qa.onrender.com/api/expenses", {
           params: { ...filters, ...sortOptions },
         });
         setExpenses(response.data);
@@ -81,7 +81,7 @@ const ExpenseList = ({
 
   const deleteExpense = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/expenses/${id}`);
+      await axios.delete(`https://expense-track-j3qa.onrender.com/api/expenses/${id}`);
       setExpenses(expenses.filter((expense) => expense._id !== id));
     } catch (error) {
       console.error("Error deleting expense:", error);
@@ -90,7 +90,7 @@ const ExpenseList = ({
 
   const deleteBudget = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/budgets/${id}`);
+      await axios.delete(`https://expense-track-j3qa.onrender.com/api/budgets/${id}`);
       setBudgets(budgets.filter((budget) => budget._id !== id));
     } catch (error) {
       console.error("Error deleting budget:", error);
